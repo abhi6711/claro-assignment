@@ -1,0 +1,82 @@
+
+//colors
+$quartz: #1f18a7;
+$white: #fff;
+
+//fonts
+$font_0: Heebo;
+
+@mixin basic_style {
+	font-family: $font_0;
+	font-weight: 500;	
+	font-size: 1.2em;
+	min-width: 100px !important;
+	max-width: 200px !important;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: $white;
+	opacity: 1 !important;
+}
+
+.container-fluid {
+    margin: 30px 0px 0px 0px;
+}
+
+.card {
+    max-width: 350px;
+    margin: 20px 20px 20px 10px;
+    height: 350px;
+}
+
+button {
+    background-color: $quartz;
+    @include basic_style();
+}
+
+.like-dislike {
+    float: right;
+    margin: 0px 0px 0px 70px;
+}
+
+img {
+    cursor: pointer;
+}
+
+#errorMsg {
+    color: #c11010;
+    margin: 10px 0px 0px 10px;
+    font-size: 20px;
+}
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
+.mat-card-header .mat-card-title, .mat-card-subtitle {
+    font-weight: 600;
+}
+
+.mat-card-header .mat-card-subtitle:not(:first-child) {
+    margin-top: -15px !important;
+    font-size: 12px;
+}
+
+.main-logo {
+    display: block;
+    max-width:80px;
+    max-height:95px;
+    width: auto;
+    height: auto;
+    margin-left: 100px;
+}
+
+.mat-card-content {
+    height: 100px;
+    overflow-y: auto;
+    word-wrap: break-word;
+}

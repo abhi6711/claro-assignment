@@ -1,0 +1,46 @@
+<div class="container-fluid" *ngIf="isLoaded">
+  <!-- Search Button -->
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <mat-form-field>
+        <input matInput placeholder="Search" [(ngModel)]="itemDesc">
+      </mat-form-field>
+      <button mat-button (click)="searchItem()">
+        Search
+      </button>
+    </div>
+  </div>
+  <!-- Beer Card-->
+  <div class="row">
+    <div class="col-md-4" *ngFor="let keys of beerList">
+      <mat-card class="card">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img mat-card-avatar src="{{keys.image_url}}">
+          </div>
+          <mat-card-title>{{keys.name}}</mat-card-title>
+          <mat-card-subtitle>{{keys.tagline}}</mat-card-subtitle>
+          <div class="like-dislike">
+            <img *ngIf="!keys.favourite" matTooltip="Add to Favourites" (click)="likeDislikeItem(keys.id, 'like')" src="assets/images/dislike.svg"
+              width="20" height="20">
+            <img *ngIf="keys.favourite" matTooltip="Added to Favourites" (click)="likeDislikeItem(keys.id, 'dislike')" src="assets/images/like.svg"
+              width="20" height="20">
+          </div>
+        </mat-card-header>
+        <img class="main-logo" mat-card-image  matTooltip="{{keys.name}}" src="{{keys.image_url}}" width="100" height="100" alt="{{keys.tagline}}">
+        <mat-card-content>
+          <p class="card-content">
+            {{keys.description}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<!-- Error Message-->
+<div *ngIf="isError">
+  <p id="errorMsg">Unable to fetch the data. Please check your internet connection.</p>
+</div>
+<div *ngIf="loader" class="loader">
+  <mat-spinner></mat-spinner>
+</div>
